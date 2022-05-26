@@ -1,0 +1,66 @@
+object Form2: TForm2
+  Left = 69
+  Top = 131
+  BorderStyle = bsDialog
+  Caption = 'diagram'
+  ClientHeight = 450
+  ClientWidth = 875
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object QRChart1: TQRChart
+    Left = 0
+    Top = 0
+    Width = 873
+    Height = 449
+    Frame.Color = clBlack
+    Frame.DrawTop = False
+    Frame.DrawBottom = False
+    Frame.DrawLeft = False
+    Frame.DrawRight = False
+    Size.Values = (
+      1187.97916666667
+      0
+      0
+      2309.8125)
+    object QRDBChart1: TQRDBChart
+      Left = -1
+      Top = -1
+      Width = 1
+      Height = 1
+      BackWall.Brush.Color = clWhite
+      BackWall.Brush.Style = bsClear
+      Title.AdjustFrame = False
+      Title.Text.Strings = (
+        'TQRChart')
+      Title.Visible = False
+      Legend.Visible = False
+      View3D = False
+      View3DWalls = False
+      object Series1: TLineSeries
+        Marks.ArrowLength = 8
+        Marks.Visible = False
+        SeriesColor = clRed
+        ShowInLegend = False
+        Dark3D = False
+        Pointer.InflateMargins = True
+        Pointer.Style = psRectangle
+        Pointer.Visible = False
+        XValues.DateTime = False
+        XValues.Name = 'X'
+        XValues.Multiplier = 1
+        XValues.Order = loAscending
+        YValues.DateTime = False
+        YValues.Name = 'Y'
+        YValues.Multiplier = 1
+        YValues.Order = loNone
+      end
+    end
+  end
+end

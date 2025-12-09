@@ -3,13 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Binomial Tree Option Pricing</title>
+    <title>Binomial Tree Option Pricing Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
-    <h1>Binomial Tree Option Pricing</h1>
-    <p>Open the browser console to see the output.</p>
+    <div class="container">
+        <header>
+            <h1>Optimized Binomial Tree Option Pricing</h1>
+            <p class="subtitle">Algorithm by Eddy Dong © 2008 - Peking University</p>
+            <p class="subtitle">Converted from the original Delphi project. <a href="https://github.com/eddydong/binomial_tree_option_pricing" target="_blank" class="github-link">View on GitHub</a></p>
+        </header>
 
-    <!-- Link to the main.js file -->
+        <div class="main-content">
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="stockPrice">Stock Price (S)</label>
+                    <input type="number" id="stockPrice" value="100" step="0.01">
+                </div>
+
+                <div class="input-group">
+                    <label for="strikePrice">Strike Price (X)</label>
+                    <input type="number" id="strikePrice" value="100" step="0.01">
+                </div>
+
+                <div class="input-group">
+                    <label for="volatility">Annual Volatility (σ)</label>
+                    <input type="number" id="volatility" value="0.2" step="0.01">
+                </div>
+
+                <div class="input-group">
+                    <label for="riskFreeRate">Risk-Free Rate (r)</label>
+                    <input type="number" id="riskFreeRate" value="0.05" step="0.001">
+                </div>
+
+                <div class="input-group">
+                    <label for="timeToMaturity">Time to Maturity (years)</label>
+                    <input type="number" id="timeToMaturity" value="1" step="0.1">
+                </div>
+
+                <div class="input-group">
+                    <label for="steps">Number of Steps (n, max 2000)</label>
+                    <input type="number" id="steps" value="10" step="1" min="1" max="2000">
+                </div>
+
+                <div class="input-group">
+                    <label for="iterations">Repeat Calculation</label>
+                    <input type="number" id="iterations" value="1" step="1" min="1">
+                </div>
+
+                <div class="input-group radio-group">
+                    <label>Option Type</label>
+                    <div class="radio-buttons">
+                        <label class="radio-label">
+                            <input type="radio" name="optionType" value="0" checked>
+                            <span>Call</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="optionType" value="1">
+                            <span>Put</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button id="calculateBtn" class="btn btn-primary">Calculate Price</button>
+                    <button id="chartBtn" class="btn btn-secondary">Generate Chart</button>
+                </div>
+
+                <div class="results">
+                    <div class="result-item">
+                        <label>Option Price:</label>
+                        <input type="text" id="result" readonly>
+                    </div>
+                    <div class="result-item">
+                        <label>Elapsed Time (ms):</label>
+                        <input type="text" id="elapsed" readonly>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-section">
+                <div id="chartPlaceholder" class="chart-placeholder">
+                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
+                        <polyline points="3 17 9 11 13 15 21 7"></polyline>
+                        <polyline points="14 7 21 7 21 14"></polyline>
+                    </svg>
+                    <p>Click "Generate Chart" to visualize option price convergence</p>
+                </div>
+                <canvas id="convergenceChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Calculating...</div>
+    </div>
+
     <script src="main.js"></script>
 </body>
 </html>
